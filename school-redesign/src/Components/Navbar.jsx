@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <>
-      <a
+        <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[999] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 focus:rounded"
       >
@@ -26,8 +26,10 @@ export default function Navbar() {
       </a>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 bg-paper/95 backdrop-blur-sm border-b transition-shadow ${
-          scrolled ? 'border-ink/10 shadow-sm' : 'border-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
+          scrolled
+            ? 'bg-paper/95 border-b border-ink/10 shadow-md'
+            : 'bg-paper/0 border-b border-transparent shadow-none'
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
