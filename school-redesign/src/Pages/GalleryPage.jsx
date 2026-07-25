@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Reveal from '../components/Reveal'
+import Reveal from '../Components/Reveal'
 import campus from '../assets/campus.jpg'
 import ncc1 from '../assets/ncc1.jpg'
 import ncc2 from '../assets/ncc2.jpg'

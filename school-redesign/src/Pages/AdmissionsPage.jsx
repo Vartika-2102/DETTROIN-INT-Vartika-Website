@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaArrowRight } from 'react-icons/fa'
-import Reveal from '../components/Reveal'
+import Reveal from '../Components/Reveal'
 
 // Create a free form at https://formspree.io (2 minutes), then replace
 // YOUR_FORM_ID below with the ID they give you.
