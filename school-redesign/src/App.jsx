@@ -19,8 +19,8 @@ function App() {
     <div>
       <Navbar />
       <main id="main-content">
-        <Hero />
-        <Stats />
+        <Reveal><Hero /></Reveal>
+        <Reveal><Stats /></Reveal>
         <Reveal><About /></Reveal>
         <Reveal><ChairmanMessage /></Reveal>
         <Reveal><Facilities /></Reveal>
