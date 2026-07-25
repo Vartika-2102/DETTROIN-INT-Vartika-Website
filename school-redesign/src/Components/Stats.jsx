@@ -1,5 +1,7 @@
-import CountUp from 'react-countup'
+import * as CountUpModule from 'react-countup'
 import { useInView } from 'react-intersection-observer'
+
+const CountUp = CountUpModule.default?.default ?? CountUpModule.default ?? CountUpModule
 
 const stats = [
   { end: 6000, suffix: '+', label: 'Students & Faculty' },
