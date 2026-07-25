@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
 
 // Create a free form at https://formspree.io (2 minutes), then replace
 // YOUR_FORM_ID below with the ID they give you. Until then the form will
@@ -64,6 +65,55 @@ export default function Contact() {
 
         <div className="grid md:grid-cols-2 gap-16">
 
+          {/* Left side - contact info with icons */}
+          <div className="text-ink/70 text-sm">
+            <p className="font-display text-xl text-ink mb-6">Krishna International School</p>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-brass/10 flex items-center justify-center flex-shrink-0">
+                  <FaMapMarkerAlt className="text-brass" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-ink/50 mb-1">Address</p>
+                  <p>Delhi G.T. Road, Aligarh &ndash; 202001 (U.P.) India</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-brass/10 flex items-center justify-center flex-shrink-0">
+                  <FaPhoneAlt className="text-brass" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-ink/50 mb-1">Phone</p>
+                  <p>+91 983-70-50000</p>
+                  <p>+91 735-10-50000</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-brass/10 flex items-center justify-center flex-shrink-0">
+                  <FaEnvelope className="text-brass" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-ink/50 mb-1">Email</p>
+                  <p>info@kisaligarh.com</p>
+                </div>
+              </div>
+            </div>
+
+              <a
+              href="https://www.google.com/maps/search/?api=1&query=Delhi+G.T.+Road%2C+Aligarh+-+202001+U.P.+India"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 mt-8 text-xs uppercase tracking-widest text-brass hover:text-ink border-b border-brass hover:border-ink pb-1 transition-colors"
+            >
+              View Direction
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+
+          {/* Right side - form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="contact-name" className="text-xs uppercase tracking-widest text-ink/60">Full Name</label>
@@ -123,24 +173,6 @@ export default function Contact() {
               </p>
             )}
           </form>
-
-          <div className="text-ink/70 text-sm space-y-2">
-            <p className="font-display text-xl text-ink mb-3">Krishna International School</p>
-            <p>Delhi G.T. Road, Aligarh &ndash; 202001 (U.P.) India</p>
-            <p>+91 983-70-50000</p>
-            <p>+91 735-10-50000</p>
-            <p>info@kisaligarh.com</p>
-
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Delhi+G.T.+Road%2C+Aligarh+-+202001+U.P.+India"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-xs uppercase tracking-widest text-brass hover:text-ink border-b border-brass hover:border-ink pb-1 transition-colors"
-            >
-              View Direction
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
 
         </div>
 
