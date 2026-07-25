@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
+import { FaSearchPlus } from 'react-icons/fa'
 import campus from '../assets/campus.jpg'
 import ncc1 from '../assets/ncc1.jpg'
 import ncc2 from '../assets/ncc2.jpg'
@@ -72,15 +73,26 @@ export default function Gallery() {
               key={p.label}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className="relative overflow-hidden group text-left cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brass"
+              className="group relative overflow-hidden text-left cursor-zoom-in rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brass"
               aria-label={`View larger image: ${p.label}`}
             >
               <img
                 src={p.img}
                 alt={p.label}
                 loading="lazy"
-                className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-110"
               />
+
+              {/* Dark overlay - stronger on hover */}
+              <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/60 transition-colors duration-300" />
+
+              {/* View Image indicator - centered, fades in on hover */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-paper opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <FaSearchPlus className="text-2xl" />
+                <span className="text-xs uppercase tracking-widest">View Image</span>
+              </div>
+
+              {/* Bottom label */}
               <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/80 to-transparent text-paper p-4">
                 <span className="font-display text-lg">{p.label}</span>
               </figcaption>
