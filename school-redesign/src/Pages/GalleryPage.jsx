@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Reveal from '../components/Reveal'
 import campus from '../assets/campus.jpg'
 import ncc1 from '../assets/ncc1.jpg'
 import ncc2 from '../assets/ncc2.jpg'
@@ -65,34 +66,37 @@ export default function GalleryPage() {
           <span aria-hidden="true">&larr;</span> Back to Home
         </Link>
 
-        <p className="text-xs uppercase tracking-widest text-brass mb-4">Gallery</p>
-        <h1 className="font-display text-4xl md:text-5xl leading-tight mb-4 max-w-2xl">
-          Around the campus.
-        </h1>
-        <p className="text-ink/70 max-w-xl mb-16">
-          A closer look at life at Krishna International School &mdash; our
-          campus, our NCC unit, and the moments that make up a school year.
-        </p>
+        <Reveal y={24}>
+          <p className="text-xs uppercase tracking-widest text-brass mb-4">Gallery</p>
+          <h1 className="font-display text-4xl md:text-5xl leading-tight mb-4 max-w-2xl">
+            Around the campus.
+          </h1>
+          <p className="text-ink/70 max-w-xl mb-16">
+            A closer look at life at Krishna International School &mdash; our
+            campus, our NCC unit, and the moments that make up a school year.
+          </p>
+        </Reveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {photos.map((p, i) => (
-            <button
-              key={p.label}
-              type="button"
-              onClick={() => setActiveIndex(i)}
-              className="relative overflow-hidden group text-left cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brass"
-              aria-label={`View larger image: ${p.label}`}
-            >
-              <img
-                src={p.img}
-                alt={p.label}
-                loading="lazy"
-                className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/80 to-transparent text-paper p-4">
-                <span className="font-display text-lg">{p.label}</span>
-              </figcaption>
-            </button>
+            <Reveal key={p.label} y={20} scale={0.9} delay={(i % 3) * 0.1}>
+              <button
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                className="relative overflow-hidden group text-left cursor-zoom-in w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brass"
+                aria-label={`View larger image: ${p.label}`}
+              >
+                <img
+                  src={p.img}
+                  alt={p.label}
+                  loading="lazy"
+                  className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/80 to-transparent text-paper p-4">
+                  <span className="font-display text-lg">{p.label}</span>
+                </figcaption>
+              </button>
+            </Reveal>
           ))}
         </div>
 

@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 export default function Hero() {
   return (
     <section
@@ -6,7 +8,7 @@ export default function Hero() {
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
-        <div>
+        <Reveal y={36}>
           <p className="text-xs uppercase tracking-[4px] text-brass mb-4">
             CBSE Affiliated • Aligarh, Uttar Pradesh
           </p>
@@ -47,20 +49,25 @@ export default function Hero() {
               Explore Campus
             </a>
           </div>
-        </div>
+        </Reveal>
 
         {/* Right Image */}
         <div className="relative flex justify-center">
 
-          <img
-            src="/Images/hero-school.jpg"
-            alt="Krishna International School"
-            className="w-full max-w-[520px] h-[480px] md:h-[540px] object-cover rounded-[30px] shadow-2xl transition-all duration-500 hover:scale-[1.02]"
-          />
+          <Reveal y={24} scale={0.96} delay={0.15}>
+            <img
+              src="/Images/hero-school.jpg"
+              alt="Krishna International School"
+              className="w-full max-w-[520px] h-[480px] md:h-[540px] object-cover rounded-[30px] shadow-2xl transition-all duration-500 hover:scale-[1.02]"
+            />
+          </Reveal>
 
           {/* Students */}
-          <div className="absolute top-8 -left-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300">
-
+          <Reveal
+            y={16}
+            delay={0.4}
+            className="absolute top-8 -left-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300"
+          >
             <span className="text-3xl">📚</span>
 
             <div>
@@ -69,12 +76,14 @@ export default function Hero() {
                 Students
               </p>
             </div>
-
-          </div>
+          </Reveal>
 
           {/* Awards */}
-          <div className="absolute top-1/2 -right-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300">
-
+          <Reveal
+            y={16}
+            delay={0.55}
+            className="absolute top-1/2 -right-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300"
+          >
             <span className="text-3xl">🏆</span>
 
             <div>
@@ -83,12 +92,14 @@ export default function Hero() {
                 Awards
               </p>
             </div>
-
-          </div>
+          </Reveal>
 
           {/* Campus */}
-          <div className="absolute bottom-8 left-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300">
-
+          <Reveal
+            y={16}
+            delay={0.7}
+            className="absolute bottom-8 left-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300"
+          >
             <span className="text-3xl">🌳</span>
 
             <div>
@@ -97,8 +108,7 @@ export default function Hero() {
                 Green Campus
               </p>
             </div>
-
-          </div>
+          </Reveal>
 
         </div>
       </div>

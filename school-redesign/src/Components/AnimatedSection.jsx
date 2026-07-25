@@ -1,14 +1,12 @@
-import { motion } from 'framer-motion'
+import Reveal from './Reveal'
 
+// Kept for backward compatibility with existing imports.
+// Internally just delegates to Reveal so there's one source of truth
+// for the fade/slide/zoom-in-view animation logic.
 export default function AnimatedSection({ children, delay = 0 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
-    >
+    <Reveal delay={delay} y={40}>
       {children}
-    </motion.div>
+    </Reveal>
   )
 }

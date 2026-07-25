@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaArrowRight } from 'react-icons/fa'
+import Reveal from '../components/Reveal'
 
 // Create a free form at https://formspree.io (2 minutes), then replace
 // YOUR_FORM_ID below with the ID they give you.
@@ -160,7 +161,7 @@ export default function AdmissionsPage() {
         </div>
 
         {/* Enquiry form */}
-        <div className="mb-20">
+        <Reveal y={32} className="mb-20">
           <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl">
             <h2 className="font-display text-2xl mb-2">Send an Enquiry</h2>
             <div>
@@ -224,37 +225,36 @@ export default function AdmissionsPage() {
               </p>
             )}
           </form>
-        </div>
+        </Reveal>
 
         {/* Contact info cards */}
-        <div>
+        <Reveal y={32}>
           <h2 className="font-display text-2xl mb-8">Krishna International School</h2>
           <div className="grid sm:grid-cols-3 gap-6">
-            {contactCards.map(({ icon: Icon, label, lines, href, linkLabel }) => (
-              <div
-                key={label}
-                className="group border border-ink/10 bg-paper px-6 py-8 transition-all duration-300 hover:border-brass hover:shadow-xl hover:shadow-ink/5 hover:-translate-y-1"
-              >
-                <div className="w-11 h-11 rounded-full bg-ink text-brass flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-brass group-hover:text-paper">
-                  <Icon aria-hidden="true" />
+            {contactCards.map(({ icon: Icon, label, lines, href, linkLabel }, i) => (
+              <Reveal key={label} y={24} delay={i * 0.12}>
+                <div className="group border border-ink/10 bg-paper px-6 py-8 transition-all duration-300 hover:border-brass hover:shadow-xl hover:shadow-ink/5 hover:-translate-y-1">
+                  <div className="w-11 h-11 rounded-full bg-ink text-brass flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-brass group-hover:text-paper">
+                    <Icon aria-hidden="true" />
+                  </div>
+                  <p className="text-xs uppercase tracking-widest text-brass mb-3">{label}</p>
+                  {lines.map((line) => (
+                    <p key={line} className="text-ink/70 text-sm leading-relaxed">{line}</p>
+                  ))}
+                  <a
+                    href={href}
+                    target={label === 'Address' ? '_blank' : undefined}
+                    rel={label === 'Address' ? 'noreferrer' : undefined}
+                    className="inline-flex items-center gap-2 mt-5 text-xs uppercase tracking-widest text-ink hover:text-brass border-b border-ink/30 hover:border-brass pb-1 transition-colors"
+                  >
+                    {linkLabel}
+                    <FaArrowRight className="text-[10px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                  </a>
                 </div>
-                <p className="text-xs uppercase tracking-widest text-brass mb-3">{label}</p>
-                {lines.map((line) => (
-                  <p key={line} className="text-ink/70 text-sm leading-relaxed">{line}</p>
-                ))}
-                <a
-                  href={href}
-                  target={label === 'Address' ? '_blank' : undefined}
-                  rel={label === 'Address' ? 'noreferrer' : undefined}
-                  className="inline-flex items-center gap-2 mt-5 text-xs uppercase tracking-widest text-ink hover:text-brass border-b border-ink/30 hover:border-brass pb-1 transition-colors"
-                >
-                  {linkLabel}
-                  <FaArrowRight className="text-[10px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                </a>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </div>
