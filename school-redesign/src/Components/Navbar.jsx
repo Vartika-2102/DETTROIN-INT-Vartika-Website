@@ -22,6 +22,22 @@ export default function Navbar() {
   function renderLink(link, onClick) {
     const slug = link.toLowerCase().replace(' ', '')
 
+    if (link === 'About') {
+      return (
+        <Link key={link} to="/about" onClick={onClick} className="text-sm uppercase tracking-widest text-ink/70 hover:text-brass">
+          {link}
+        </Link>
+      )
+    }
+
+    if (link === 'Awards') {
+      return (
+        <Link key={link} to="/about#awards" onClick={onClick} className="text-sm uppercase tracking-widest text-ink/70 hover:text-brass">
+          {link}
+        </Link>
+      )
+    }
+
     if (link === 'Gallery') {
       return (
         <Link key={link} to="/gallery" onClick={onClick} className="text-sm uppercase tracking-widest text-ink/70 hover:text-brass">

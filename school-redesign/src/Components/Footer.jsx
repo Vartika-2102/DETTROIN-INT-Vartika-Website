@@ -8,18 +8,8 @@ const socials = [
 ]
 
 const navColumns = [
-  {
-    title: 'About',
-    links: [
-      { label: 'Overview', hash: 'top' },
-      { label: "Chairman's Message", hash: 'chairman' },
-      { label: 'Recognition & Award', hash: 'awards' },
-    ],
-  },
-  {
-    title: 'Admission',
-    links: [],
-  },
+  { title: 'About', links: [] },
+  { title: 'Admission', links: [] },
   {
     title: 'Academics',
     links: [
@@ -121,11 +111,28 @@ export default function Footer() {
                     </li>
                   ))}
                   {col.title === 'About' && (
-                    <li>
-                      <Link to="/gallery" className="hover:text-paper transition-colors">
-                        Gallery
-                      </Link>
-                    </li>
+                    <>
+                      <li>
+                        <Link to="/about" className="hover:text-paper transition-colors">
+                          Overview
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/about#chairman" className="hover:text-paper transition-colors">
+                          Chairman's Message
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/about#awards" className="hover:text-paper transition-colors">
+                          Recognition & Award
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/gallery" className="hover:text-paper transition-colors">
+                          Gallery
+                        </Link>
+                      </li>
+                    </>
                   )}
                   {col.title === 'Admission' && (
                     <>
