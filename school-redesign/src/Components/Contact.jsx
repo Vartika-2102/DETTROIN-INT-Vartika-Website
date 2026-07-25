@@ -102,11 +102,25 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Embedded Google Map */}
+            <div className="mt-8 rounded-2xl overflow-hidden border border-ink/10 h-64">
+              <iframe
+                title="Krishna International School location"
+                src="https://www.google.com/maps?q=Delhi+G.T.+Road,+Aligarh+-+202001,+U.P.+India&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
               <a
               href="https://www.google.com/maps/search/?api=1&query=Delhi+G.T.+Road%2C+Aligarh+-+202001+U.P.+India"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 mt-8 text-xs uppercase tracking-widest text-brass hover:text-ink border-b border-brass hover:border-ink pb-1 transition-colors"
+              className="inline-flex items-center gap-2 mt-4 text-xs uppercase tracking-widest text-brass hover:text-ink border-b border-brass hover:border-ink pb-1 transition-colors"
             >
               View Direction
               <span aria-hidden="true">&rarr;</span>

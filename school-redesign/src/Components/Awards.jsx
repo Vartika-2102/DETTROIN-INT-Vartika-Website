@@ -63,10 +63,16 @@ export default function Awards() {
           {awards.map((a) => {
             const Icon = a.icon
             return (
-              <div key={a.title} className="bg-paper p-8">
-                <Icon className="text-brass text-2xl mb-4" aria-hidden="true" />
+              <div
+                key={a.title}
+                className="group bg-paper p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:z-10 relative hover:bg-ink/[0.02]"
+              >
+                <Icon
+                  className="text-brass text-2xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6"
+                  aria-hidden="true"
+                />
                 <p className="text-xs font-mono text-ink/40 mb-2">{a.year}</p>
-                <h3 className="font-display text-lg leading-snug mb-2">
+                <h3 className="font-display text-lg leading-snug mb-2 group-hover:text-brass transition-colors duration-300">
                   {a.title}
                 </h3>
                 <p className="text-ink/60 text-sm">{a.org}</p>

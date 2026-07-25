@@ -9,10 +9,12 @@ import Awards from './Components/Awards'
 import Testimonials from './Components/Testimonials'
 import Contact from './Components/Contact'
 import Gallery from './Components/Gallery'
+import FAQ from './Components/FAQ'
 import Footer from './Components/Footer'
 import Reveal from './Components/Reveal'
 import WhatsAppButton from './Components/WhatsAppButton'
 import BackToTop from './Components/BackToTop'
+import StickyApplyButton from './Components/StickyApplyButton'
 
 function App() {
   return (
@@ -28,11 +30,13 @@ function App() {
         <Reveal><Awards /></Reveal>
         <Reveal><Testimonials /></Reveal>
         <Reveal><Gallery /></Reveal>
+        <Reveal><FAQ /></Reveal>
         <Reveal><Contact /></Reveal>
       </main>
       <Footer />
       <WhatsAppButton />
       <BackToTop />
+      <StickyApplyButton />
     </div>
   )
 }
