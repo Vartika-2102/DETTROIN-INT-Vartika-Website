@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
-import { FaSearchPlus } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import campus from '../assets/campus.jpg'
 import ncc1 from '../assets/ncc1.jpg'
 import ncc2 from '../assets/ncc2.jpg'
@@ -22,24 +22,22 @@ const photos = [
   { img: ncc8, label: 'NCC Formation' },
 ]
 
-export default function Gallery() {
+export default function GalleryPage() {
   const [activeIndex, setActiveIndex] = useState(null)
 
   const close = useCallback(() => setActiveIndex(null), [])
-  const showPrev = useCallback(
-    (e) => {
-      e.stopPropagation()
-      setActiveIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length))
-    },
-    []
-  )
-  const showNext = useCallback(
-    (e) => {
-      e.stopPropagation()
-      setActiveIndex((i) => (i === null ? null : (i + 1) % photos.length))
-    },
-    []
-  )
+  const showPrev = useCallback((e) => {
+    e.stopPropagation()
+    setActiveIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length))
+  }, [])
+  const showNext = useCallback((e) => {
+    e.stopPropagation()
+    setActiveIndex((i) => (i === null ? null : (i + 1) % photos.length))
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   useEffect(() => {
     if (activeIndex === null) return
@@ -57,15 +55,24 @@ export default function Gallery() {
   }, [activeIndex, close, showPrev, showNext])
 
   return (
-    <section id="gallery" className="py-24 px-6 bg-ink/[0.03]">
+    <section className="pt-40 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
 
-        <p className="text-xs uppercase tracking-widest text-brass mb-4">
-          Gallery
-        </p>
-        <h2 className="font-display text-4xl leading-tight mb-16">
+        <Link
+          to="/"
+          className="text-xs uppercase tracking-widest text-brass hover:text-ink inline-flex items-center gap-2 mb-10"
+        >
+          <span aria-hidden="true">&larr;</span> Back to Home
+        </Link>
+
+        <p className="text-xs uppercase tracking-widest text-brass mb-4">Gallery</p>
+        <h1 className="font-display text-4xl md:text-5xl leading-tight mb-4 max-w-2xl">
           Around the campus.
-        </h2>
+        </h1>
+        <p className="text-ink/70 max-w-xl mb-16">
+          A closer look at life at Krishna International School &mdash; our
+          campus, our NCC unit, and the moments that make up a school year.
+        </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {photos.map((p, i) => (
@@ -73,26 +80,15 @@ export default function Gallery() {
               key={p.label}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className="group relative overflow-hidden text-left cursor-zoom-in rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brass"
+              className="relative overflow-hidden group text-left cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brass"
               aria-label={`View larger image: ${p.label}`}
             >
               <img
                 src={p.img}
                 alt={p.label}
                 loading="lazy"
-                className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500"
               />
-
-              {/* Dark overlay - stronger on hover */}
-              <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/60 transition-colors duration-300" />
-
-              {/* View Image indicator - centered, fades in on hover */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-paper opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <FaSearchPlus className="text-2xl" />
-                <span className="text-xs uppercase tracking-widest">View Image</span>
-              </div>
-
-              {/* Bottom label */}
               <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/80 to-transparent text-paper p-4">
                 <span className="font-display text-lg">{p.label}</span>
               </figcaption>
@@ -118,7 +114,6 @@ export default function Gallery() {
           >
             &times;
           </button>
-
           <button
             type="button"
             onClick={showPrev}
@@ -127,7 +122,6 @@ export default function Gallery() {
           >
             &#8249;
           </button>
-
           <figure className="max-w-4xl max-h-[85vh]" onClick={(e) => e.stopPropagation()}>
             <img
               src={photos[activeIndex].img}
@@ -138,7 +132,6 @@ export default function Gallery() {
               {photos[activeIndex].label}
             </figcaption>
           </figure>
-
           <button
             type="button"
             onClick={showNext}
