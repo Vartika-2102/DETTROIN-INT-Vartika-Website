@@ -5,6 +5,7 @@ import Stats from './Components/Stats'
 import Facilities from './Components/Facilities'
 import WhyChooseUs from './Components/WhyChooseUs'
 import Testimonials from './Components/Testimonials'
+import FAQ from './Components/FAQ'
 import Footer from './Components/Footer'
 import Reveal from './Components/Reveal'
 import WhatsAppButton from './Components/WhatsAppButton'
@@ -114,6 +115,7 @@ function Home() {
       <Reveal><WhyChooseUs /></Reveal>
       <Reveal><Testimonials /></Reveal>
       <Reveal><GalleryTeaser /></Reveal>
+      <Reveal><FAQ /></Reveal>
       <Reveal><AdmissionsTeaser /></Reveal>
     </main>
   )
