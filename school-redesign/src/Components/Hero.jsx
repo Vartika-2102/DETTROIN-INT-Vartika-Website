@@ -1,71 +1,107 @@
 export default function Hero() {
   return (
-    <section id="top" className="pt-40 pb-24 px-6">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Left content */}
+    <section
+      id="top"
+      className="pt-40 pb-28 px-6 bg-gradient-to-b from-[#faf7ef] via-[#fdfcf8] to-white"
+    >
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        {/* Left Content */}
         <div>
-          <p className="text-xs uppercase tracking-widest text-brass mb-4">
-            CBSE Affiliated &middot; Aligarh, Uttar Pradesh
+          <p className="text-xs uppercase tracking-[4px] text-brass mb-4">
+            CBSE Affiliated • Aligarh, Uttar Pradesh
           </p>
 
-          <h1 className="font-display text-5xl md:text-7xl leading-tight mb-4">
+          <h1 className="font-display text-5xl md:text-7xl leading-tight mb-5">
             Dedicated to
             <br />
             <span className="italic text-brass">Excellence.</span>
           </h1>
 
-          <p className="text-sm uppercase tracking-widest text-ink/50 mb-6">
+          <p className="text-sm uppercase tracking-widest text-ink/60 mb-3">
             Inspiring Young Minds Since 1988
           </p>
 
-          <p className="max-w-lg text-ink/70 mb-8">
-            Set across five acres away from the city's noise, Krishna International
-            School has spent decades shaping curious, self-motivated learners.
+          <p className="text-green-700 font-medium mb-6">
+            Where Knowledge Meets Character & Innovation
+          </p>
+
+          <p className="max-w-lg text-ink/70 leading-8 mb-8">
+            Set across five acres away from the city's noise, Krishna
+            International School has spent decades shaping curious,
+            self-motivated learners through academic excellence, innovation,
+            leadership and holistic development.
           </p>
 
           <div className="flex flex-wrap gap-4">
-              <a
+            <a
               href="#contact"
-              className="inline-block bg-ink text-paper px-6 py-3 text-xs uppercase tracking-widest"
+              className="bg-ink text-paper px-7 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-green-900 hover:scale-105 transition-all duration-300"
             >
               Begin Admission
             </a>
-              <a
-              href="#virtual-tour"
-              className="inline-block border border-ink text-ink px-6 py-3 text-xs uppercase tracking-widest"
+
+            <a
+              href="#gallery"
+              className="border-2 border-ink text-ink px-7 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-ink hover:text-paper transition-all duration-300"
             >
-              Virtual Tour
+              Explore Campus
             </a>
           </div>
         </div>
 
-        {/* Right image with floating stat cards */}
-        <div className="relative">
+        {/* Right Image */}
+        <div className="relative flex justify-center">
+
           <img
             src="/Images/hero-school.jpg"
-            alt="Krishna International School campus"
-            className="w-full h-[420px] md:h-[480px] object-cover object-top"
+            alt="Krishna International School"
+            className="w-full max-w-[520px] h-[480px] md:h-[540px] object-cover rounded-[30px] shadow-2xl transition-all duration-500 hover:scale-[1.02]"
           />
 
-          {/* Floating card - top left */}
-          <div className="absolute -top-6 -left-6 bg-paper shadow-lg px-5 py-4 hidden sm:block">
-            <p className="font-display text-2xl text-brass">6000+</p>
-            <p className="text-xs uppercase tracking-widest text-ink/60">Students</p>
+          {/* Students */}
+          <div className="absolute top-8 -left-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300">
+
+            <span className="text-3xl">📚</span>
+
+            <div>
+              <h3 className="font-bold text-xl text-green-800">6000+</h3>
+              <p className="text-xs uppercase tracking-widest text-gray-500">
+                Students
+              </p>
+            </div>
+
           </div>
 
-          {/* Floating card - bottom right */}
-          <div className="absolute -bottom-6 -right-6 bg-ink text-paper shadow-lg px-5 py-4">
-            <p className="font-display text-2xl text-brasslight">60+</p>
-            <p className="text-xs uppercase tracking-widest text-paper/70">Awards</p>
+          {/* Awards */}
+          <div className="absolute top-1/2 -right-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300">
+
+            <span className="text-3xl">🏆</span>
+
+            <div>
+              <h3 className="font-bold text-xl text-green-800">60+</h3>
+              <p className="text-xs uppercase tracking-widest text-gray-500">
+                Awards
+              </p>
+            </div>
+
           </div>
 
-          {/* Floating card - bottom left */}
-          <div className="absolute -bottom-6 left-6 bg-paper shadow-lg px-5 py-4 hidden md:block">
-            <p className="font-display text-2xl text-brass">5 Acre</p>
-            <p className="text-xs uppercase tracking-widest text-ink/60">Campus</p>
+          {/* Campus */}
+          <div className="absolute bottom-8 left-8 hidden lg:flex items-center gap-3 bg-white rounded-2xl shadow-xl px-5 py-4 hover:-translate-y-2 transition-all duration-300">
+
+            <span className="text-3xl">🌳</span>
+
+            <div>
+              <h3 className="font-bold text-xl text-green-800">5 Acres</h3>
+              <p className="text-xs uppercase tracking-widest text-gray-500">
+                Green Campus
+              </p>
+            </div>
+
           </div>
+
         </div>
       </div>
     </section>
-  )
+  );
 }
