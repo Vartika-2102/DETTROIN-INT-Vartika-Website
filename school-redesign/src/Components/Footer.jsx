@@ -1,10 +1,10 @@
 import { useLocation, Link } from 'react-router-dom'
-import { FaGooglePlay, FaApple } from 'react-icons/fa'
+import { FaGooglePlay, FaApple, FaYoutube, FaFacebookF, FaInstagram } from 'react-icons/fa'
 
 const socials = [
-  { label: 'YouTube', href: 'https://www.youtube.com/channel/UCfAsGL009vpBCbLDxP9fQsw' },
-  { label: 'Facebook', href: 'https://www.facebook.com/krishnainternationalaligarh' },
-  { label: 'Instagram', href: 'https://www.instagram.com/krishnainternationalaligarh/' },
+  { label: 'YouTube', icon: FaYoutube, href: 'https://www.youtube.com/channel/UCfAsGL009vpBCbLDxP9fQsw' },
+  { label: 'Facebook', icon: FaFacebookF, href: 'https://www.facebook.com/krishnainternationalaligarh' },
+  { label: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/krishnainternationalaligarh/' },
 ]
 
 const navColumns = [
@@ -58,17 +58,21 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-3 mt-6">
-              {socials.map((s) => (
+              {socials.map((s) => {
+                const Icon = s.icon
+                return (
                   <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs uppercase tracking-widest border border-paper/20 px-3 py-1.5 hover:border-brasslight hover:text-brasslight"
-                >
-                  {s.label}
-                </a>
-              ))}
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={s.label}
+                    className="w-10 h-10 rounded-full border border-paper/20 flex items-center justify-center text-paper/80 transition-all duration-300 hover:border-brasslight hover:text-ink hover:bg-brasslight hover:-translate-y-0.5"
+                  >
+                    <Icon aria-hidden="true" />
+                  </a>
+                )
+              })}
             </div>
 
             <p className="text-xs uppercase tracking-widest text-brasslight mt-8 mb-3">
@@ -160,8 +164,8 @@ export default function Footer() {
 
         </div>
 
-        <div className="pt-6 flex flex-wrap justify-between gap-4 text-xs text-paper/40">
-          <span>&copy; {new Date().getFullYear()} Krishna International School</span>
+        <div className="pt-6 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-paper/40">
+          <span>&copy; {new Date().getFullYear()} Krishna International School. All rights reserved.</span>
         </div>
 
       </div>

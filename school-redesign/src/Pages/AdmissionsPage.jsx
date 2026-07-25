@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaArrowRight } from 'react-icons/fa'
 
 // Create a free form at https://formspree.io (2 minutes), then replace
 // YOUR_FORM_ID below with the ID they give you.
@@ -27,6 +28,31 @@ const documents = [
   "4 recent passport-size photographs",
   "Aadhaar card of student and parents",
   "Address proof",
+]
+
+// Contact info shown as cards below the enquiry form.
+const contactCards = [
+  {
+    icon: FaMapMarkerAlt,
+    label: 'Address',
+    lines: ['Delhi G.T. Road, Aligarh', '\u2013 202001 (U.P.) India'],
+    href: 'https://www.google.com/maps/search/?api=1&query=Delhi+G.T.+Road%2C+Aligarh+-+202001+U.P.+India',
+    linkLabel: 'View Direction',
+  },
+  {
+    icon: FaPhoneAlt,
+    label: 'Phone',
+    lines: ['+91 983-70-50000', '+91 735-10-50000'],
+    href: 'tel:+919837050000',
+    linkLabel: 'Call Now',
+  },
+  {
+    icon: FaEnvelope,
+    label: 'Email',
+    lines: ['info@kisaligarh.com'],
+    href: 'mailto:info@kisaligarh.com',
+    linkLabel: 'Send Email',
+  },
 ]
 
 export default function AdmissionsPage() {
@@ -133,10 +159,9 @@ export default function AdmissionsPage() {
           </ul>
         </div>
 
-        {/* Enquiry form + contact info */}
-        <div className="grid md:grid-cols-2 gap-16">
-
-          <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Enquiry form */}
+        <div className="mb-20">
+          <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl">
             <h2 className="font-display text-2xl mb-2">Send an Enquiry</h2>
             <div>
               <label htmlFor="adm-name" className="text-xs uppercase tracking-widest text-ink/60">Full Name</label>
@@ -180,9 +205,12 @@ export default function AdmissionsPage() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="bg-ink text-paper px-6 py-3 text-xs uppercase tracking-widest disabled:opacity-50"
+              className="group relative inline-flex items-center gap-3 overflow-hidden bg-gradient-to-r from-ink to-brass bg-[length:200%_100%] bg-left hover:bg-right text-paper px-7 py-3 text-xs uppercase tracking-widest transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-brass/30"
             >
               {status === 'sending' ? 'Sending…' : 'Send Enquiry'}
+              {status !== 'sending' && (
+                <FaArrowRight className="text-sm transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+              )}
             </button>
 
             {status === 'success' && (
@@ -196,25 +224,36 @@ export default function AdmissionsPage() {
               </p>
             )}
           </form>
+        </div>
 
-          <div className="text-ink/70 text-sm space-y-2">
-            <p className="font-display text-xl text-ink mb-3">Krishna International School</p>
-            <p>Delhi G.T. Road, Aligarh &ndash; 202001 (U.P.) India</p>
-            <p>+91 983-70-50000</p>
-            <p>+91 735-10-50000</p>
-            <p>info@kisaligarh.com</p>
-
-              <a
-              href="https://www.google.com/maps/search/?api=1&query=Delhi+G.T.+Road%2C+Aligarh+-+202001+U.P.+India"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-xs uppercase tracking-widest text-brass hover:text-ink border-b border-brass hover:border-ink pb-1 transition-colors"
-            >
-              View Direction
-              <span aria-hidden="true">&rarr;</span>
-            </a>
+        {/* Contact info cards */}
+        <div>
+          <h2 className="font-display text-2xl mb-8">Krishna International School</h2>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {contactCards.map(({ icon: Icon, label, lines, href, linkLabel }) => (
+              <div
+                key={label}
+                className="group border border-ink/10 bg-paper px-6 py-8 transition-all duration-300 hover:border-brass hover:shadow-xl hover:shadow-ink/5 hover:-translate-y-1"
+              >
+                <div className="w-11 h-11 rounded-full bg-ink text-brass flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-brass group-hover:text-paper">
+                  <Icon aria-hidden="true" />
+                </div>
+                <p className="text-xs uppercase tracking-widest text-brass mb-3">{label}</p>
+                {lines.map((line) => (
+                  <p key={line} className="text-ink/70 text-sm leading-relaxed">{line}</p>
+                ))}
+                <a
+                  href={href}
+                  target={label === 'Address' ? '_blank' : undefined}
+                  rel={label === 'Address' ? 'noreferrer' : undefined}
+                  className="inline-flex items-center gap-2 mt-5 text-xs uppercase tracking-widest text-ink hover:text-brass border-b border-ink/30 hover:border-brass pb-1 transition-colors"
+                >
+                  {linkLabel}
+                  <FaArrowRight className="text-[10px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                </a>
+              </div>
+            ))}
           </div>
-
         </div>
 
       </div>
