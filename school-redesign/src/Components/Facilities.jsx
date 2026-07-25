@@ -43,7 +43,7 @@ export default function Facilities() {
           {facilities.map((f) => (
             <div
               key={f.n}
-              className="group relative overflow-hidden rounded-2xl h-80 cursor-pointer transition-all duration-300 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-2xl h-80 transition-all duration-300 hover:shadow-2xl"
             >
               {/* Background image */}
               <img
@@ -64,12 +64,15 @@ export default function Facilities() {
                   {f.desc}
                 </p>
 
-                <button className="mt-5 inline-flex items-center gap-2 self-start text-xs uppercase tracking-widest border border-paper/40 px-5 py-2.5 rounded-full transition-all duration-300 group-hover:border-paper group-hover:bg-paper group-hover:text-ink">
+                  <a
+                  href="#contact"
+                  className="mt-5 inline-flex items-center gap-2 self-start text-xs uppercase tracking-widest border border-paper/40 px-5 py-2.5 rounded-full transition-all duration-300 hover:border-paper hover:bg-paper hover:text-ink"
+                >
                   Learn More
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
-                </button>
+                </a>
               </div>
             </div>
           ))}
