@@ -75,6 +75,14 @@ export default function Footer() {
               })}
             </div>
 
+            <Link
+              to="/admissions"
+              className="group inline-flex items-center gap-2 mt-6 bg-brasslight text-ink px-5 py-2.5 text-xs uppercase tracking-widest font-medium transition-all duration-300 hover:bg-paper hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20"
+            >
+              Apply for Admissions
+              <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+            </Link>
+
             <p className="text-xs uppercase tracking-widest text-brasslight mt-8 mb-3">
               Get the School App
             </p>
@@ -164,8 +172,9 @@ export default function Footer() {
 
         </div>
 
-        <div className="pt-6 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-paper/40">
+        <div className="pt-6 flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-between gap-2 text-xs text-paper/40 text-center sm:text-left">
           <span>&copy; {new Date().getFullYear()} Krishna International School. All rights reserved.</span>
+          <span className="text-paper/30">Designed by Vartika Singh</span>
         </div>
 
       </div>
