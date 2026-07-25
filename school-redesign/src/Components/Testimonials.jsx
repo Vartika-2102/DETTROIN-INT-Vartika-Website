@@ -1,3 +1,9 @@
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 const testimonials = [
   {
     quote: 'The counselling support and small class sizes gave our daughter the confidence to speak up in class for the first time.',
@@ -25,20 +31,61 @@ export default function Testimonials() {
           Trusted by parents, remembered by students.
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={40}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="testimonials-swiper pb-14"
+        >
           {testimonials.map((t) => (
-            <div key={t.name}>
-              <p className="text-lg font-display italic leading-relaxed mb-4">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <p className="text-xs uppercase tracking-widest text-paper/60">
-                {t.name}
-              </p>
-            </div>
+            <SwiperSlide key={t.name}>
+              <div className="h-full">
+                <p className="text-lg font-display italic leading-relaxed mb-4">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <p className="text-xs uppercase tracking-widest text-paper/60">
+                  {t.name}
+                </p>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
 
       </div>
+
+      <style>{`
+        .testimonials-swiper {
+          position: relative;
+        }
+        .testimonials-swiper .swiper-button-next,
+        .testimonials-swiper .swiper-button-prev {
+          color: #d4af7a;
+          width: 36px;
+          height: 36px;
+        }
+        .testimonials-swiper .swiper-button-next::after,
+        .testimonials-swiper .swiper-button-prev::after {
+          font-size: 20px;
+        }
+        .testimonials-swiper .swiper-pagination {
+          position: relative;
+          margin-top: 20px;
+        }
+        .testimonials-swiper .swiper-pagination-bullet {
+          background: rgba(255, 255, 255, 0.4);
+          opacity: 1;
+        }
+        .testimonials-swiper .swiper-pagination-bullet-active {
+          background: #d4af7a;
+        }
+      `}</style>
     </section>
   )
 }
